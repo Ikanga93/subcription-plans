@@ -1,0 +1,472 @@
+.subscription-plans {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  position: relative;
+}
+
+.subscription-plans::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 58, 237, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(79, 70, 229, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(236, 72, 153, 0.2) 0%, transparent 50%);
+  z-index: -1;
+  animation: backgroundShift 15s ease-in-out infinite;
+}
+
+@keyframes backgroundShift {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.hero-section {
+  text-align: center;
+  margin-bottom: 80px;
+  position: relative;
+}
+
+.main-title {
+  font-size: 4rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #e2e8f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 24px;
+  text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+  letter-spacing: -0.02em;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% { text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3); }
+  100% { text-shadow: 0 4px 30px rgba(255, 255, 255, 0.5); }
+}
+
+.main-subtitle {
+  font-size: 1.375rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 50px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  font-weight: 400;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.billing-toggle {
+  display: inline-flex;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 8px;
+  border-radius: 60px;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  gap: 6px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.billing-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.billing-toggle button {
+  padding: 14px 28px;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.billing-toggle button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s;
+}
+
+.billing-toggle button:hover::before {
+  left: 100%;
+}
+
+.billing-toggle button.active {
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  color: #1e293b;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transform: scale(1.02);
+}
+
+.savings-badge {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 700;
+}
+
+.plans-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+  perspective: 1000px;
+}
+
+.plan-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 50px 35px;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    0 8px 16px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  transform-style: preserve-3d;
+}
+
+.plan-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(135deg, var(--plan-color), #EC4899);
+  opacity: 0.9;
+  border-radius: 24px 24px 0 0;
+}
+
+.plan-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.plan-card:hover {
+  transform: translateY(-12px) rotateX(5deg);
+  box-shadow: 
+    0 32px 64px rgba(0, 0, 0, 0.12),
+    0 16px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: var(--plan-color);
+}
+
+.plan-card:hover::after {
+  opacity: 1;
+}
+
+.plan-card.popular {
+  transform: scale(1.05);
+  border-color: var(--plan-color);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.plan-card.popular::before {
+  height: 6px;
+  background: linear-gradient(135deg, var(--plan-color), #EC4899);
+}
+
+.popular-badge {
+  position: absolute;
+  top: -1px;
+  right: 35px;
+  background: linear-gradient(135deg, var(--plan-color) 0%, #EC4899 100%);
+  color: white;
+  padding: 10px 24px;
+  border-radius: 0 0 16px 16px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.plan-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.plan-name {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+
+.plan-description {
+  color: #64748b;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.price-section {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.currency {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-right: 4px;
+}
+
+.amount {
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0 6px;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.period {
+  font-size: 1.4rem;
+  color: #64748b;
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+.savings {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.features-list {
+  list-style: none;
+  margin-bottom: 50px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  color: #334155;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  margin: 0 -8px;
+}
+
+.feature-item:hover {
+  background: rgba(var(--plan-color-rgb, 79, 70, 229), 0.05);
+  transform: translateX(4px);
+}
+
+.check-icon {
+  width: 24px;
+  height: 24px;
+  color: #10b981;
+  flex-shrink: 0;
+  padding: 2px;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 50%;
+}
+
+.cta-button {
+  width: 100%;
+  padding: 20px 32px;
+  background: linear-gradient(135deg, var(--plan-color) 0%, #EC4899 100%);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 
+    0 16px 32px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  filter: brightness(1.1) saturate(1.1);
+}
+
+.cta-button:active {
+  transform: translateY(-1px) scale(1.01);
+}
+
+.bottom-section {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.guarantee-text {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: inline-block;
+}
+
+/* Custom CSS Variables for Plan Colors */
+.plan-card[style*="--plan-color: #4F46E5"] {
+  --plan-color-rgb: 79, 70, 229;
+}
+
+.plan-card[style*="--plan-color: #7C3AED"] {
+  --plan-color-rgb: 124, 58, 237;
+}
+
+.plan-card[style*="--plan-color: #EC4899"] {
+  --plan-color-rgb: 236, 72, 153;
+}
+
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 3rem;
+  }
+  
+  .main-subtitle {
+    font-size: 1.2rem;
+    padding: 0 16px;
+  }
+  
+  .plans-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .plan-card {
+    padding: 40px 25px;
+    transform: none !important;
+  }
+  
+  .plan-card:hover {
+    transform: translateY(-8px) !important;
+  }
+  
+  .amount {
+    font-size: 3.5rem;
+  }
+  
+  .billing-toggle {
+    flex-direction: column;
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .billing-toggle button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .subscription-plans {
+    padding: 40px 15px;
+  }
+  
+  .main-title {
+    font-size: 2.5rem;
+  }
+  
+  .plan-card {
+    padding: 30px 20px;
+  }
+  
+  .popular-badge {
+    right: 20px;
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+  
+  .cta-button {
+    padding: 18px 24px;
+    font-size: 1.1rem;
+  }
+} 
