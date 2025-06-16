@@ -16,6 +16,8 @@ const SubscriptionPlans = () => {
         'Single admin account',
         'Basic support (up to 72 hours)',
         'Basic reporting (PDF)',
+        'Dedicated domain',
+        'Dedicated email'
       ],
       popular: false,
       color: '#4F46E5'
@@ -36,7 +38,9 @@ const SubscriptionPlans = () => {
         'Advanced analytics',
         'Custom menu builder',
         'Inventory tracking',
-        'Custom branding'
+        'Custom branding',
+        'Dedicated domain',
+        'Dedicated email'
       ],
       popular: false,
       color: '#7C3AED'
@@ -55,7 +59,9 @@ const SubscriptionPlans = () => {
         'Real-time analytics & insights',
         'Custom branding',
         'Marketing automation tools',
-        'Customer loyalty programs'
+        'Customer loyalty programs',
+        'Dedicated domain',
+        'Dedicated email'
       ],
       popular: false,
       color: '#EC4899'
@@ -132,7 +138,7 @@ const SubscriptionPlans = () => {
 
       <div className="bottom-section">
         <p className="guarantee-text">
-          🍽️30-day money-back guarantee • 🔒 Cancel anytime • 📞 Dedicated restaurant support
+          🍽️$100 yearly fees for dedicated domain, dedicated email, and maintenance
         </p>
       </div>
     </div>
